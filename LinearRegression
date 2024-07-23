@@ -1,1 +1,25 @@
-# Test
+# librería para análisis de datos:
+import pandas as pd
+# librería para trabajar con matrices:
+import numpy as np
+# librería gráfica
+import matplotlib.pyplot as plt
+# librería scikit-learn para Machine Learning
+from sklearn import linear_model
+
+df = pd.read_excel("/content/PrecioMetroCuadrado-original.xlsx")
+
+%matplotlib inline
+plt.scatter(df.año, df.precio)
+
+model = linear_model.LinearRegression()
+model.fit(df[['año']], df.precio)
+
+model.predict([[2024]])
+
+r2 = model.score(df[['año']], df.precio)
+print(r2)
+
+print(model.coef_)
+print(model.intercept_)
+#199.63 * año + -395214
